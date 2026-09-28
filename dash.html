@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DASH — Shop • Travel • Stay • Plan</title>
+  <meta name="description" content="DASH luxury-red shopping, travel and lifestyle marketplace demo.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root{
+        --red:#7a0c18;
+        --deep:#4a0710;
+        --red2:#a91524;
+        --cream:#fcfaf8;
+        --rose:#f7e8ea;
+        --gold:#c9a45c;
+        --ink:#241a1c}
+    *{box-sizing:border-box} 
+
+    body{
+        margin:0;
+        background:var(--cream);
+        color:var(--ink);
+        font-family:Inter,Poppins,system-ui,sans-serif}
+    a{text-decoration:none;color:inherit}
+
+    .navbar{
+        background:var(--deep);
+        color:#fff;
+        position:sticky;
+        top:0;
+        z-index:1000}
+
+    .brand{
+        font-family:Georgia,serif;
+        font-size:1.8rem;
+        letter-spacing:.16em;
+        color:#fff}
+
+        .search{
+            border-radius:999px;
+            border:0;
+            padding:.7rem 1.1rem}
+
+    .btn-dash{
+        background:var(--red);
+        border:1px solid var(--red);color:#fff;
+        border-radius:10px;
+        font-weight:700}
+        
+        .btn-dash:hover{
+            background:var(--red2);
+            color:#fff}
+
+    .btn-outline-dash{
+        border:1px solid var(--red);
+        color:var(--red);
+        border-radius:10px;
+        font-weight:700}
+
+        .btn-outline-dash:hover{
+            background:var(--red);
+            color:#fff}
+
+    .hero{
+        min-height:440px;
+        background:linear-gradient(90deg,rgba(35,3,8,.9),rgba(35,3,8,.25)),url('https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1800&q=85') center/cover;
+        color:#fff;
+        display:flex;
+        align-items:center}
+
+    .hero h1{
+        font:700 clamp(2.5rem,5vw,5rem)/1 Georgia,serif;max-width:720px}
+
+        .hero p{
+            font-size:1.15rem}
+
+    .glass{
+        background:rgba(255,255,255,.94);
+        border-radius:16px;
+        padding:14px;
+        color:var(--ink);
+        box-shadow:0 15px 40px #0002}
+
+    .section{
+        padding:55px 0}
+
+    .section-title{
+        font:700 2rem Georgia,serif}
+
+    .category{background:#fff;
+        border:1px solid #eadfe1;
+        border-radius:18px;
+        padding:18px;
+        text-align:center;
+         transition:.2s;
+        height:100%}
+
+    .category:hover,
+
+    .card-dash:hover{
+            transform:translateY(-4px);
+             box-shadow:0 12px 30px #4a07101a}
+
+    .icon-circle{
+        width:48px;
+        height:48px;
+        border-radius:50%;
+        display:grid;
+        place-items:center;
+        background:var(--rose);
+        color:var(--red);
+        margin:auto auto 10px;
+        font-size:1.25rem}
+
+    .card-dash{
+        border:1px solid #eadfe1;
+        border-radius:18px;
+        background:#fff;
+        overflow:hidden;
+        height:100%;
+        transition:.2s
+    }
+
+    .product-img{
+        height:210px;
+        object-fit:cover;
+        width:100%;
+        background:#eee
+    }
+    .card-body{
+        padding:16px
+    }
+    .price{
+        font-size:1.15rem;
+        font-weight:800;
+        color:var(--red)
+    }
+    .old{
+        text-decoration:line-through;
+        color:#999;
+        font-size:.85rem
+    }
+    .badge-red{
+        background:var(--rose);
+        color:var(--red);
+        font-weight:700
+    }
+    .service{
+        background:var(--deep);
+        color:#fff;
+        border-radius:18px;
+        padding:20px;
+        height:100%
+    }
+    .service i{
+        font-size:1.7rem;
+        color:#f2d9dc
+    }
+    .page{
+        display:none
+    }
+    .page.active{
+        display:block
+    }
+    .sidebar{
+        background:#fff;
+        border:1px solid #eadfe1;
+        border-radius:16px;
+        padding:18px;
+        position:sticky;
+        top:88px
+    }
+    .footer{
+        background:var(--deep);
+        color:#fff;
+        padding:45px 0
+    }
+    .footer a{
+        color:#ddd
+    }
+    .footer a:hover{
+        color:#fff
+    }
+    .cart-count{
+        min-width:20px;
+        height:20px;
+        border-radius:50%;
+        background:#fff;
+        color:var(--red);
+        display:inline-grid;
+        place-items:center;
+        font-size:.7rem;
+        font-weight:800
+    }
+    .toast-container{
+        z-index:3000}
+        
+        .nav-link.active{
+            color:#fff!important}
+            
+            .nav-link{
+                color:#eee!important}
+
+    .step{
+        border:1px solid #eadfe1;
+        border-radius:16px;
+        background:#fff;
+        padding:18px}
+        
+        .step-num{
+            width:32px;
+            height:32px;
+            background:var(--red);
+            color:#fff;
+            border-radius:50%;
+            display:grid;
+            place-items:center;
+            font-weight:800}
+
+    .dropzone{
+        border:2px dashed #cfaeb3;
+        border-radius:16px;
+        padding:35px;
+        text-align:center;
+        background:#fff}
+
+    @media(max-width:991px){.navbar .nav-links{display:none}.hero{min-height:560px}.hero h1{font-size:3rem}.sidebar{position:static;margin-bottom:20px}}
+    
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid px-3 px-lg-5">
+    <a class="brand" href="#" onclick="showPage('home')">DASH</a>
+    <form class="d-flex flex-grow-1 mx-lg-4 my-2 my-lg-0" onsubmit="searchProducts(event)">
+      <input id="globalSearch" class="form-control search" placeholder="Search products, hotels, places, travel, food..." autocomplete="off">
+    </form>
+    <div class="d-flex align-items-center gap-3 text-white">
+      <button class="btn btn-sm text-white" onclick="showPage('travel')" title="Travel"><i class="bi bi-airplane"></i></button>
+      <button class="btn btn-sm text-white" onclick="showPage('profile')" title="Profile"><i class="bi bi-person"></i></button>
+      <button class="btn btn-sm text-white position-relative" onclick="openCart()" title="Cart"><i class="bi bi-bag fs-5"></i><span id="cartCount" class="cart-count position-absolute top-0 start-100 translate-middle">0</span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="bg-white border-bottom">
+  <div class="container-fluid px-3 px-lg-5 py-2 d-flex gap-3 overflow-auto">
+    <a href="#" onclick="showPage('home')">Home</a><a href="#" onclick="showPage('shop')">Shop</a>
+    <a href="#" onclick="showPage('travel')">Travel</a><a href="#" onclick="showPage('hotels')">Hotels</a>
+    <a href="#" onclick="showPage('planner')">Planner</a><a href="#" onclick="showPage('medicine')">Medicine</a>
+    <a href="#" onclick="showPage('entertainment')">Entertainment</a><a href="#" onclick="openLogin()">Login</a>
+  </div>
+</div>
+
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="container">
+      <div class="row"><div class="col-lg-8">
+        <span class="badge bg-light text-dark mb-3">YOUR WORLD. ONE DASH.</span>
+        <h1>Everything You Need. In One Place.</h1>
+        <p>Shop • Travel • Stay • Plan • Explore • Enjoy</p>
+        <div class="glass mt-4">
+          <div class="row g-2">
+            <div class="col-md-3"><select id="country" class="form-select"><option>India</option><option>United Arab Emirates</option><option>Nepal</option></select></div>
+            <div class="col-md-3"><select id="state" class="form-select"><option>Uttar Pradesh</option><option>Delhi</option><option>Maharashtra</option></select></div>
+            <div class="col-md-3"><select id="district" class="form-select"><option>Varanasi</option><option>Lucknow</option><option>Prayagraj</option></select></div>
+            <div class="col-md-3"><button class="btn btn-dash w-100" onclick="exploreLocation()">Explore</button></div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="section pt-4"><div class="container">
+    <div class="row g-3" id="categories"></div>
+  </div></div>
+
+  <div class="section pt-2"><div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-4"><div><div class="section-title">Top Deals For You</div><p class="text-secondary mb-0">Demo products loaded from a fake API.</p></div><button class="btn btn-outline-dash" onclick="showPage('shop')">View All</button></div>
+    <div id="homeProducts" class="row g-4"></div>
+  </div></div>
+
+  <div class="section pt-0"><div class="container"><div class="row g-3">
+    <div class="col-md-4"><div class="service"><i class="bi bi-lightning-charge"></i><h5 class="mt-3">Fast Delivery</h5><p class="mb-0">Demo delivery tracking and emergency-style quick-commerce UI.</p></div></div>
+    <div class="col-md-4"><div class="service"><i class="bi bi-capsule"></i><h5 class="mt-3">Medicine</h5><p class="mb-0">Upload a prescription for a simulated verification workflow.</p></div></div>
+    <div class="col-md-4"><div class="service"><i class="bi bi-map"></i><h5 class="mt-3">Travel & Hotels</h5><p class="mb-0">Build a trip with destinations, hotels, food and activities.</p></div></div>
+  </div></div></div>
+</section>
+
+<section id="shop" class="page section"><div class="container">
+  <div class="row g-4">
+    <div class="col-lg-3"><div class="sidebar"><h5>Filters</h5>
+      <label class="form-label mt-2">Category</label><select id="catFilter" class="form-select" onchange="renderShop()"><option value="all">All</option></select>
+      <label class="form-label mt-3">Maximum Price</label><input id="priceFilter" type="range" class="form-range" min="500" max="100000" value="100000" oninput="document.getElementById('priceValue').textContent='₹'+Number(this.value).toLocaleString();renderShop()"><div id="priceValue">₹100,000</div>
+      <label class="form-label mt-3">Minimum Rating</label><select id="ratingFilter" class="form-select" onchange="renderShop()"><option value="0">Any</option><option value="4">4+</option><option value="4.5">4.5+</option></select>
+      <button class="btn btn-outline-dash w-100 mt-3" onclick="resetFilters()">Reset</button>
+    </div></div>
+    <div class="col-lg-9"><div class="d-flex justify-content-between mb-3"><div><h2 class="section-title">Shop</h2><span id="resultInfo" class="text-secondary"></span></div><select id="sortFilter" class="form-select w-auto" onchange="renderShop()"><option value="popular">Popularity</option><option value="low">Price: Low</option><option value="high">Price: High</option><option value="rating">Rating</option></select></div><div id="shopProducts" class="row g-4"></div></div>
+  </div>
+</div></section>
+
+<section id="travel" class="page section"><div class="container"><div class="row g-4 align-items-center">
+  <div class="col-lg-6"><span class="badge badge-red">TRAVEL</span><h1 class="section-title mt-2">Travel the World Your Way.</h1><p class="text-secondary">Search destinations, compare sample packages and send a trip into the planner.</p>
+    <div class="card-dash p-3"><input id="travelSearch" class="form-control mb-3" placeholder="Where do you want to go?"><div class="row g-2"><div class="col"><select class="form-select"><option>Flights</option><option>Places</option><option>Food</option></select></div><div class="col"><button class="btn btn-dash w-100" onclick="searchTravel()">Search</button></div></div></div>
+  </div><div class="col-lg-6"><img class="img-fluid rounded-4" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1000&q=80" alt="India travel"></div>
+</div><div class="row g-4 mt-2" id="travelCards"></div></div></section>
+
+<section id="hotels" class="page section"><div class="container">
+  <div class="d-flex justify-content-between align-items-end mb-4"><div><span class="badge badge-red">STAY</span><h2 class="section-title">Hotels</h2></div></div>
+  <div class="card-dash p-3 mb-4"><div class="row g-2"><div class="col-md-4"><input id="hotelPlace" class="form-control" placeholder="Destination" value="Varanasi"></div><div class="col-md-2"><input class="form-control" type="date"></div><div class="col-md-2"><input class="form-control" type="date"></div><div class="col-md-2"><select class="form-select"><option>2 Guests</option><option>1 Guest</option><option>4 Guests</option></select></div><div class="col-md-2"><button class="btn btn-dash w-100" onclick="showToast('Hotel search updated')">Search</button></div></div></div>
+  <div id="hotelCards" class="row g-4"></div>
+</div></section>
+
+<section id="planner" class="page section"><div class="container">
+  <h2 class="section-title">Trip Planner</h2><p class="text-secondary">Build a simple sample itinerary without any external travel API.</p>
+  <div class="row g-4">
+    <div class="col-lg-7"><div class="row g-3">
+      <div class="col-md-6"><div class="step"><div class="d-flex gap-2"><span class="step-num">1</span><div><b>Destination</b><input id="planDestination" class="form-control mt-2" value="Varanasi"></div></div></div></div>
+      <div class="col-md-6"><div class="step"><div class="d-flex gap-2"><span class="step-num">2</span><div><b>Dates</b><input id="planDays" type="number" class="form-control mt-2" value="3" min="1" max="30"></div></div></div></div>
+      <div class="col-md-6"><div class="step"><div class="d-flex gap-2"><span class="step-num">3</span><div><b>Budget</b><select id="planBudget" class="form-select mt-2"><option>₹10,000–₹20,000</option><option>₹20,000–₹50,000</option><option>₹50,000+</option></select></div></div></div></div>
+      <div class="col-md-6"><div class="step"><div class="d-flex gap-2"><span class="step-num">4</span><div><b>Interests</b><select id="planInterest" class="form-select mt-2"><option>Culture & Food</option><option>Nature</option><option>Shopping</option></select></div></div></div></div>
+    </div><button class="btn btn-dash mt-4" onclick="generatePlan()">Generate My Plan</button></div>
+    <div class="col-lg-5"><div id="planOutput" class="card-dash p-4"><h5>Your Trip Plan</h5><p class="text-secondary">Choose your preferences and generate a sample plan.</p></div></div>
+  </div>
+</div></section>
+
+<section id="medicine" class="page section"><div class="container">
+  <div class="row g-4"><div class="col-lg-7"><span class="badge badge-red">MEDICINE</span><h2 class="section-title mt-2">Scan • Verify • Buy • Renew</h2><p class="text-secondary">This demo does not verify prescriptions or sell medicines. It only demonstrates the UI workflow.</p>
+    <div class="dropzone"><i class="bi bi-file-earmark-medical fs-1" style="color:var(--red)"></i><h5 class="mt-2">Upload Prescription</h5><p class="text-secondary">Choose a local image/PDF for this demo interface.</p><input id="rxFile" type="file" class="form-control" accept="image/*,.pdf"><button class="btn btn-dash mt-3" onclick="verifyDemoPrescription()">Simulate Verification</button><div id="rxStatus" class="mt-3"></div></div>
+  </div><div class="col-lg-5"><div class="card-dash p-4"><h5>Renewal Reminder</h5><p class="text-secondary">Set a reminder to contact an authorized pharmacy/clinician when appropriate.</p><input type="date" class="form-control mb-2"><button class="btn btn-outline-dash w-100" onclick="showToast('Demo reminder saved')">Save Reminder</button></div></div></div>
+</div></section>
+
+<section id="entertainment" class="page section"><div class="container"><span class="badge badge-red">ENTERTAINMENT</span><h2 class="section-title mt-2">Movies, Games, Music & Books</h2><div id="entCards" class="row g-4 mt-1"></div></div></section>
+
+<section id="profile" class="page section"><div class="container"><div class="row g-4">
+  <div class="col-lg-4"><div class="card-dash p-4 text-center"><div class="icon-circle" style="width:80px;height:80px;font-size:2rem"><i class="bi bi-person"></i></div><h4 id="profileName">Guest</h4><p class="text-secondary" id="profileEmail">Sign in to personalize DASH.</p><button class="btn btn-dash" onclick="openLogin()">Login / Signup</button></div></div>
+  <div class="col-lg-8"><div class="card-dash p-4"><h4>Preferences</h4><div class="row g-3 mt-1"><div class="col-md-6"><label class="form-label">Preferred Language</label><select class="form-select" onchange="localStorage.setItem('dashLang',this.value);showToast('Language preference saved')"><option>English</option><option>Hindi</option><option>Bengali</option><option>Marathi</option><option>Tamil</option></select></div><div class="col-md-6"><label class="form-label">Date of Birth</label><input id="dob" type="date" class="form-control" onchange="showAge()"></div></div><div id="ageOutput" class="mt-3"></div></div>
+  <div class="card-dash p-4 mt-3"><h4>My Dashboard</h4><div class="row g-2"><div class="col-md-4"><button class="btn btn-outline-dash w-100" onclick="openCart()">My Orders / Cart</button></div><div class="col-md-4"><button class="btn btn-outline-dash w-100" onclick="showToast('Wishlist is empty in this demo')">Wishlist</button></div><div class="col-md-4"><button class="btn btn-outline-dash w-100" onclick="showToast('Support request demo opened')">Help & Support</button></div></div></div></div>
+</div></div></section>
+</main>
+
+<footer class="footer"><div class="container"><div class="row g-4"><div class="col-lg-4"><div class="brand">DASH</div><p class="mt-2 text-white-50">Your World. One DASH.</p></div><div class="col-6 col-lg-2"><b>Shop</b><div class="mt-2 d-grid gap-1"><a href="#" onclick="showPage('shop')">Electronics</a><a href="#" onclick="showPage('shop')">Fashion</a><a href="#" onclick="showPage('medicine')">Medicine</a></div></div><div class="col-6 col-lg-2"><b>Travel</b><div class="mt-2 d-grid gap-1"><a href="#" onclick="showPage('travel')">Travel</a><a href="#" onclick="showPage('hotels')">Hotels</a><a href="#" onclick="showPage('planner')">Planner</a></div></div><div class="col-6 col-lg-2"><b>Support</b><div class="mt-2 d-grid gap-1"><a href="#">Help</a><a href="#">Contact</a><a href="#">Privacy</a></div></div></div><hr><small>© 2026 DASH Demo. Payments, API data and booking results are simulated.</small></div></footer>
+
+<!-- Product Modal -->
+<div class="modal fade" id="productModal" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content border-0 rounded-4"><div class="modal-body p-4" id="productModalBody"></div></div></div></div>
+
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content border-0 rounded-4"><div class="modal-header"><h5>Your Cart</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body" id="cartBody"></div></div></div></div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 rounded-4"><div class="modal-body p-4"><h3 class="section-title">Welcome to DASH</h3><input id="loginName" class="form-control mb-2" placeholder="Name"><input id="loginEmail" class="form-control mb-2" placeholder="Email or phone"><input type="password" class="form-control mb-3" placeholder="Password"><button class="btn btn-dash w-100" onclick="loginDemo()">Login</button><button class="btn btn-outline-dash w-100 mt-2" onclick="loginDemo()">Create Demo Account</button></div></div></div></div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="toast" class="toast"><div class="toast-body"></div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const products=[
+{id:1,name:"Wireless Earbuds",cat:"Electronics",price:1999,rating:4.6,img:"https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=700&q=80"},
+{id:2,name:"Men's Casual Shirt",cat:"Fashion",price:799,rating:4.4,img:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=700&q=80"},
+{id:3,name:"Smart Watch",cat:"Electronics",price:2499,rating:4.5,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"},
+{id:4,name:"Travel Backpack",cat:"Travel",price:1299,rating:4.7,img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80"},
+{id:5,name:"Sofa Chair",cat:"Home",price:5999,rating:4.3,img:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80"},
+{id:6,name:"Laptop",cat:"Electronics",price:49999,rating:4.8,img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=80"},
+{id:7,name:"Air Fryer",cat:"Home",price:6999,rating:4.5,img:"https://images.unsplash.com/photo-1644062099442-4f3f4f1c8d35?auto=format&fit=crop&w=700&q=80"},
+{id:8,name:"Running Shoes",cat:"Fashion",price:2499,rating:4.4,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"}
+];
+const travel=[
+{name:"Varanasi",price:2999,img:"https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=700&q=80"},
+{name:"Goa",price:4999,img:"https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=700&q=80"},
+{name:"Rishikesh",price:4499,img:"https://images.unsplash.com/photo-1595815771614-ade9d7b14c3c?auto=format&fit=crop&w=700&q=80"},
+{name:"Jaipur",price:3999,img:"https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=700&q=80"}];
+const hotels=[
+{name:"Hotel Varanasi One",place:"Varanasi",price:2499,rating:4.5,img:"https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80"},
+{name:"The Gateway View",place:"Varanasi",price:3200,rating:4.6,img:"https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=700&q=80"},
+{name:"Kashi Residency",place:"Varanasi",price:1899,rating:4.2,img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=700&q=80"}];
+let cart=JSON.parse(localStorage.getItem('dashCart')||'[]');
+let apiReady=false;
+
+function fakeAPI(data){return new Promise(resolve=>setTimeout(()=>resolve(structuredClone(data)),350))}
+async function init(){
+ const data=await fakeAPI(products); apiReady=true;
+ renderCategories(); renderHome(data); renderShop(data); renderTravel(); renderHotels(); renderEntertainment(); updateCart();
+}
+function money(n){return '₹'+n.toLocaleString('en-IN')}
+function productCard(p){return `<div class="col-sm-6 col-xl-3"><div class="card-dash"><img class="product-img" src="${p.img}" alt="${p.name}"><div class="card-body"><span class="badge badge-red">${p.cat}</span><h6 class="mt-2">${p.name}</h6><div class="text-warning">${'★'.repeat(Math.round(p.rating))}<span class="text-secondary ms-1">${p.rating}</span></div><div class="price mt-2">${money(p.price)}</div><div class="d-flex gap-2 mt-3"><button class="btn btn-outline-dash btn-sm flex-fill" onclick="viewProduct(${p.id})">View</button><button class="btn btn-dash btn-sm flex-fill" onclick="addToCart(${p.id})">Add</button></div></div></div></div>`}
+function renderHome(data){document.getElementById('homeProducts').innerHTML=data.slice(0,4).map(productCard).join('')}
+function renderCategories(){
+ const cats=[['Electronics','bi-phone'],['Fashion','bi-bag'],['Travel','bi-airplane'],['Hotels','bi-building'],['Food','bi-cup-hot'],['Medicine','bi-capsule'],['Toys','bi-controller'],['Home & Living','bi-house'],['Entertainment','bi-play-circle']];
+ document.getElementById('categories').innerHTML=cats.map(([n,i])=>`<div class="col-6 col-md-4 col-lg"><a href="#" onclick="categoryAction('${n}')"><div class="category"><div class="icon-circle"><i class="bi ${i}"></i></div><b>${n}</b></div></a></div>`).join('');
+ document.getElementById('catFilter').innerHTML='<option value="all">All</option>'+[...new Set(products.map(p=>p.cat))].map(c=>`<option>${c}</option>`).join('');
+}
+function categoryAction(c){if(c==='Travel')showPage('travel');else if(c==='Hotels')showPage('hotels');else if(c==='Medicine')showPage('medicine');else if(c==='Entertainment')showPage('entertainment');else{showPage('shop');document.getElementById('catFilter').value=c;renderShop()}}
+async function renderShop(source=products){
+ let data=await fakeAPI(source), q=(document.getElementById('globalSearch').value||'').toLowerCase(), cat=document.getElementById('catFilter').value, max=+document.getElementById('priceFilter').value, rating=+document.getElementById('ratingFilter').value, sort=document.getElementById('sortFilter').value;
+ data=data.filter(p=>(!q||p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q))&&(cat==='all'||p.cat===cat)&&p.price<=max&&p.rating>=rating);
+ if(sort==='low')data.sort((a,b)=>a.price-b.price); if(sort==='high')data.sort((a,b)=>b.price-a.price); if(sort==='rating')data.sort((a,b)=>b.rating-a.rating);
+ document.getElementById('resultInfo').textContent=`${data.length} products`; document.getElementById('shopProducts').innerHTML=data.length?data.map(productCard).join('<div class="w-100"></div>'):'<div class="col-12"><div class="alert alert-light">No products match these filters.</div></div>';
+}
+function resetFilters(){document.getElementById('catFilter').value='all';document.getElementById('priceFilter').value=100000;document.getElementById('ratingFilter').value=0;document.getElementById('sortFilter').value='popular';document.getElementById('priceValue').textContent='₹100,000';renderShop()}
+function searchProducts(e){e.preventDefault();showPage('shop');renderShop()}
+function viewProduct(id){const p=products.find(x=>x.id===id);document.getElementById('productModalBody').innerHTML=`<div class="row g-4"><div class="col-md-6"><img src="${p.img}" class="img-fluid rounded-4"></div><div class="col-md-6"><span class="badge badge-red">${p.cat}</span><h2 class="mt-2">${p.name}</h2><div class="text-warning">★★★★★ <span class="text-secondary">${p.rating} / 5</span></div><h3 class="price mt-3">${money(p.price)}</h3><p class="text-secondary">Demo product description. Stock, delivery and review data are simulated.</p><ul><li>Fast delivery demo</li><li>Secure checkout UI</li><li>Easy return workflow</li></ul><button class="btn btn-dash w-100" onclick="addToCart(${p.id});bootstrap.Modal.getInstance(document.getElementById('productModal')).hide()">Add to Cart</button></div></div>`;new bootstrap.Modal('#productModal').show()}
+function addToCart(id){const p=products.find(x=>x.id===id), item=cart.find(x=>x.id===id);item?item.qty++:cart.push({id:p.id,qty:1});saveCart();showToast(`${p.name} added to cart`)}
+function saveCart(){localStorage.setItem('dashCart',JSON.stringify(cart));updateCart()}
+function updateCart(){document.getElementById('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0)}
+function openCart(){renderCart();new bootstrap.Modal('#cartModal').show()}
+function renderCart(){
+ const body=document.getElementById('cartBody'); if(!cart.length){body.innerHTML='<div class="text-center py-5"><i class="bi bi-bag fs-1"></i><h5 class="mt-3">Your cart is empty</h5></div>';return}
+ let total=0;const rows=cart.map(item=>{const p=products.find(x=>x.id===item.id);total+=p.price*item.qty;return `<div class="d-flex gap-3 align-items-center border-bottom py-3"><img src="${p.img}" width="75" height="75" style="object-fit:cover;border-radius:12px"><div class="flex-grow-1"><b>${p.name}</b><div>${money(p.price)}</div></div><div class="input-group" style="max-width:120px"><button class="btn btn-outline-secondary" onclick="changeQty(${p.id},-1)">−</button><span class="form-control text-center">${item.qty}</span><button class="btn btn-outline-secondary" onclick="changeQty(${p.id},1)">+</button></div><button class="btn btn-sm text-danger" onclick="removeCart(${p.id})"><i class="bi bi-trash"></i></button></div>`}).join('');
+ body.innerHTML=`${rows}<div class="text-end mt-4"><h4>Total: ${money(total)}</h4><button class="btn btn-dash" onclick="checkout()">Proceed to Checkout</button></div>`;
+}
+function changeQty(id,n){const x=cart.find(i=>i.id===id);x.qty+=n;if(x.qty<=0)cart=cart.filter(i=>i.id!==id);saveCart();renderCart()}
+function removeCart(id){cart=cart.filter(i=>i.id!==id);saveCart();renderCart()}
+function checkout(){if(!cart.length)return;const total=cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);document.getElementById('cartBody').innerHTML=`<h5>Checkout</h5><p class="text-secondary">Demo payment only — no real transaction is processed.</p><select class="form-select mb-2"><option>UPI</option><option>Card</option><option>Net Banking</option><option>Cash on Delivery</option></select><input class="form-control mb-3" placeholder="Delivery address"><h4>Total: ${money(total)}</h4><button class="btn btn-dash w-100" onclick="completeOrder()">Pay / Place Demo Order</button>`}
+function completeOrder(){cart=[];saveCart();document.getElementById('cartBody').innerHTML='<div class="text-center py-5"><i class="bi bi-check-circle-fill text-success fs-1"></i><h3 class="mt-3">Order Confirmed!</h3><p>Demo order #DASH'+Date.now().toString().slice(-6)+'</p><button class="btn btn-dash" data-bs-dismiss="modal">Continue Shopping</button></div>';showToast('Demo order created')}
+function renderTravel(){document.getElementById('travelCards').innerHTML=travel.map(x=>`<div class="col-sm-6 col-lg-3"><div class="card-dash"><img class="product-img" src="${x.img}"><div class="card-body"><h5>${x.name}</h5><p class="text-secondary">Sample travel package</p><div class="price">From ${money(x.price)}</div><button class="btn btn-outline-dash w-100 mt-3" onclick="planFor('${x.name}')">Plan Trip</button></div></div></div>`).join('')}
+function searchTravel(){const q=document.getElementById('travelSearch').value.trim();showToast(q?`Searching demo travel results for ${q}`:'Enter a destination')}
+function planFor(place){document.getElementById('planDestination').value=place;showPage('planner');generatePlan()}
+function renderHotels(){document.getElementById('hotelCards').innerHTML=hotels.map(x=>`<div class="col-md-4"><div class="card-dash"><img class="product-img" src="${x.img}"><div class="card-body"><h5>${x.name}</h5><p class="text-secondary">${x.place} • ${x.rating} ★</p><div class="price">${money(x.price)} <small class="text-secondary">/ night</small></div><button class="btn btn-dash w-100 mt-3" onclick="showToast('Demo hotel selected')">Book Demo</button></div></div></div>`).join('')}
+function generatePlan(){const d=document.getElementById('planDestination').value||'Your destination',days=+document.getElementById('planDays').value||3,b=document.getElementById('planBudget').value,i=document.getElementById('planInterest').value;const acts=i==='Nature'?['Sunrise viewpoint','Local nature walk','Scenic café']:i==='Shopping'?['Local market','Handicraft shopping','Evening food street']:['Temple/heritage visit','Local food experience','Sunset boat ride'];document.getElementById('planOutput').innerHTML=`<h5>${d} • ${days} Days</h5><p class="text-secondary">Budget: ${b} • Interest: ${i}</p><hr>${Array.from({length:Math.min(days,5)},(_,n)=>`<div class="mb-3"><b>Day ${n+1}</b><div class="text-secondary">${acts[n%acts.length]} • Hotel • Local food</div></div>`).join('')}<button class="btn btn-dash w-100" onclick="showToast('Trip plan saved in demo')">Save Plan</button>`}
+function renderEntertainment(){const x=[['Movies','bi-film'],['Games','bi-controller'],['Music','bi-music-note-beamed'],['Books','bi-book']];document.getElementById('entCards').innerHTML=x.map(a=>`<div class="col-md-3"><div class="category"><div class="icon-circle"><i class="bi ${a[1]}"></i></div><h5>${a[0]}</h5><p class="text-secondary">Explore ${a[0].toLowerCase()} collections.</p><button class="btn btn-outline-dash" onclick="showToast('${a[0]} demo opened')">Explore</button></div></div>`).join('')}
+function exploreLocation(){showToast(`Exploring ${document.getElementById('district').value}, ${document.getElementById('state').value}`);showPage('travel')}
+function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id)?.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function openLogin(){new bootstrap.Modal('#loginModal').show()}
+function loginDemo(){const n=document.getElementById('loginName').value||'DASH User',e=document.getElementById('loginEmail').value||'demo@dash.local';localStorage.setItem('dashUser',JSON.stringify({n,e}));document.getElementById('profileName').textContent=n;document.getElementById('profileEmail').textContent=e;bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();showToast('Demo login successful')}
+function showAge(){const v=document.getElementById('dob').value;if(!v)return;const age=Math.floor((Date.now()-new Date(v))/(365.25*24*3600*1000));document.getElementById('ageOutput').innerHTML=`<div class="alert alert-light">Calculated age: <b>${age}</b>. Recommendations in this demo are preference-based and age-appropriate.</div>`}
+function verifyDemoPrescription(){const f=document.getElementById('rxFile').files[0];document.getElementById('rxStatus').innerHTML=f?'<div class="alert alert-warning">Demo status: uploaded for review. No medical verification has been performed.</div>':'<div class="alert alert-danger">Please choose a demo file first.</div>'}
+function showToast(msg){document.querySelector('#toast .toast-body').textContent=msg;bootstrap.Toast.getOrCreateInstance(document.getElementById('toast'),{delay:2200}).show()}
+document.addEventListener('DOMContentLoaded',()=>{const u=JSON.parse(localStorage.getItem('dashUser')||'null');if(u){profileName.textContent=u.n;profileEmail.textContent=u.e}init()})
+</script>
+</body>
+</html>
